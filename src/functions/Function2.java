@@ -15,11 +15,38 @@ public class Function2 {
 
     }
 
-    /*
-    методу передаются два упорядоченных массива(могут быть упорядочены по-разному), реализуйте функцию,
-    которая объединит их и вернет упорядоченный массив с порядком таким же как и a
-     */
     private static int[] merge(int[] a, int[] b) {
-        return new int[]{1};
+        if (a == null) {
+            return b;
+        }
+
+        boolean isArrayAHasAscendingOrder = false;
+
+        if (a.length > 0) {
+            isArrayAHasAscendingOrder = Function1.findMax(a) == a[0] ? false : true;
+        }
+
+        int[] finalArray = new int[a.length + b.length];
+
+        for (int i = 0; i < a.length; ++i) {
+            finalArray[i] = a[i];
+        }
+
+        for (int i = a.length; i < finalArray.length; ++i) {
+            finalArray[i] = b[i - a.length];
+        }
+
+        for (int i = 0; i < finalArray.length; ++i) {
+            for (int j = i + 1; j < finalArray.length; ++j) {
+                if (isArrayAHasAscendingOrder ? finalArray[i] > finalArray[j] : finalArray[i] < finalArray[j]) {
+                    int k = finalArray[i];
+                    finalArray[i] = finalArray[j];
+                    finalArray[j] = k;
+                }
+            }
+        }
+
+        return finalArray;
     }
+
 }
