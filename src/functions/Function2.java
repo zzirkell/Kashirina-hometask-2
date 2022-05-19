@@ -19,34 +19,30 @@ public class Function2 {
         if (a == null) {
             return b;
         }
-
-        boolean isArrayAHasAscendingOrder = false;
-
+        boolean isInOrder = false;
         if (a.length > 0) {
-            isArrayAHasAscendingOrder = Function1.findMax(a) == a[0] ? false : true;
+            isInOrder = Function1.fMaxim(a) == a[0] ? false : true;
         }
 
-        int[] finalArray = new int[a.length + b.length];
-
+        int[] fin = new int[a.length + b.length];
+//filling
         for (int i = 0; i < a.length; ++i) {
-            finalArray[i] = a[i];
+            fin[i] = a[i];
+        }
+        for (int i = a.length; i < fin.length; ++i) {
+            fin[i] = b[i - a.length];
         }
 
-        for (int i = a.length; i < finalArray.length; ++i) {
-            finalArray[i] = b[i - a.length];
-        }
-
-        for (int i = 0; i < finalArray.length; ++i) {
-            for (int j = i + 1; j < finalArray.length; ++j) {
-                if (isArrayAHasAscendingOrder ? finalArray[i] > finalArray[j] : finalArray[i] < finalArray[j]) {
-                    int k = finalArray[i];
-                    finalArray[i] = finalArray[j];
-                    finalArray[j] = k;
+        for (int k = 0; k < fin.length; ++k) {
+            for (int j = k + 1; j < fin.length; ++j) {
+                if (isInOrder ? fin[k] > fin[j] : fin[k] < fin[j]) {
+                    int s = fin[k];
+                    fin[k] = fin[j];
+                    fin[j] = s;
                 }
             }
         }
-
-        return finalArray;
+        return fin;
     }
 
 }

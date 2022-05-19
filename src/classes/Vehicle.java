@@ -5,13 +5,11 @@ public class Vehicle {
     int consumption100km = -1;
     String type = null;
 
-
     public Vehicle(String type, int consumption100km, int speed) {
         settype(type);
         setspeed(speed);
         setConsumption100km(consumption100km);
     }
-
 
     public void setspeed(int vehicle_average_velocity) {
         if (vehicle_average_velocity <= 0) {
@@ -21,7 +19,6 @@ public class Vehicle {
         this.speed = vehicle_average_velocity;
     }
 
-
     public void setConsumption100km(int consumption100km) {
         if (consumption100km <= 0) {
             throw new RuntimeException("consumption100km is <= 0");
@@ -29,7 +26,6 @@ public class Vehicle {
 
         this.consumption100km = consumption100km;
     }
-
 
     public void settype(String type) {
         if ((type.equals("")) || type == null ) {
