@@ -11,19 +11,17 @@ public class Vehicle {
         setConsumption100km(consumption100km);
     }
 
-    public void setspeed(int vehicle_average_velocity) {
-        if (vehicle_average_velocity <= 0) {
+    public void setspeed(int velocity) {
+        if (velocity <= 0) {
             throw new RuntimeException("speed is <= 0");
         }
-
-        this.speed = vehicle_average_velocity;
+        this.speed = velocity;
     }
 
     public void setConsumption100km(int consumption100km) {
         if (consumption100km <= 0) {
             throw new RuntimeException("consumption100km is <= 0");
         }
-
         this.consumption100km = consumption100km;
     }
 
@@ -31,26 +29,20 @@ public class Vehicle {
         if ((type.equals("")) || type == null ) {
             throw new RuntimeException("type error");
         }
-
         this.type = type;
     }
 
-
-    public int calculateTime(int distance) {
+    public int calculTime(int distance) {
         if ((distance < 0) || (speed == -1)) {
-            throw new RuntimeException("Distance error or vehicle_average_velocity is not initialized");
+            throw new RuntimeException("distance  or velocity err");
         }
-
         return distance/speed;
     }
 
-
-    public int calculateFuel(int distance) {
+    public int calculFuel(int distance) {
         if ((distance < 0) || (consumption100km == -1)) {
-            throw new RuntimeException("Distance error or consumption100km is not initialized");
+            throw new RuntimeException("distance or consumption100km err");
         }
-
         return (distance / 100) * speed;
     }
-
 }
